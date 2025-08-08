@@ -15,7 +15,7 @@ class TransactionsViewSet(viewsets.ModelViewSet):
             user = Users.objects.get(email=user_email)
         except Users.DoesNotExist:
             return Transactions.objects.none()
-        return Transactions.objects.filter(user_id=user)
+        return Transactions.objects.filter(user_id=user.id)
 
 
 class UsersViewSet(viewsets.ModelViewSet):
