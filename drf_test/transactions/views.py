@@ -9,7 +9,7 @@ class TransactionsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
     def get_queryset(self):
         user = self.request.user
-        return Transactions.objects.filter(user_id=user)
+        return Transactions.objects.filter(user_id_id=user.id)
 
 
 class UsersViewSet(viewsets.ModelViewSet):
