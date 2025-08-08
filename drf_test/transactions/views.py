@@ -8,7 +8,13 @@ class TransactionsViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionsSerializers
     permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
     def get_queryset(self):
-        user = self.request.user
+        user_email = getattr(self.request.user, "email", None)
+        if not user_email:
+            return Transactions.objects.none()
+        try:
+            user = Users.objects.get(email=user_email)
+        except Users.DoesNotExist:
+            return Transactions.objects.none()
         return Transactions.objects.filter(user_id=user)
 
 
