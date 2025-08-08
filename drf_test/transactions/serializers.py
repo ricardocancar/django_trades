@@ -19,13 +19,13 @@ class TransactionsSerializers(serializers.ModelSerializer):
 
 
 class UsersSerializers(serializers.ModelSerializer):
-    """"""
+    """Serializer for the Users model."""
     class Meta:
         model = Users
         fields = '__all__'
 
 class BankAccountSerializers(serializers.ModelSerializer):
-    """"""
+    """Serializer for the BankAccount model."""
     class Meta:
         model = BankAccount
         fields = '__all__'
